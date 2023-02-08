@@ -1,21 +1,45 @@
 class Fibonacci {
     constructor() {
-        // Where does your sequence start by default? 
+        // Initialise seeds
+        this.first = 0;
+        this.second = 1;
     }
 
     next() {
         // Return the next Fibonacci number in the current sequence
-        throw new Error('Returning next number is not yet supported!');
+        let next = this.first + this.second;
+        this.first = this.second;
+        this.second = next;
+        return next;
     }
 
     init(seed) {
-        // Initialize sequence with number to start from
-        throw new Error('Initializing sequence is not yet supported!');
+        // Reset seeds to start to check if seed is valid
+        this.first = 0;
+        this.second = 1;
+
+        while (this.second < seed) {
+            this.next();
+        }
+
+        if (this.second != seed) {
+            throw new Error('Not a fibonacci number');
+        }
+        
     }
 
     skip(forward) {
+        if (!Number.isInteger(forward)) {
+            throw new Error('Must be an integer');
+        }
+        if (forward < 1) {
+            throw new Error('Cannot skip backwards');
+        }
         // Return the Fibonacci number further on in the sequence
-        throw new Error('Skipping forward is not yet supported!');
+        for (let i = 0; i < forward; i++) {
+            this.next();
+        }
+        return this.second;
     }
 }
 
