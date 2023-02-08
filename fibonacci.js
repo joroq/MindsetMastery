@@ -41,6 +41,15 @@ class Fibonacci {
         }
         return this.second;
     }
+
+    previous() {
+        let previous = this.second;
+        this.second = this.first;
+        this.first = previous - this.first;
+        return this.second;
+
+        
+    }
 }
 
 module.exports = Fibonacci;

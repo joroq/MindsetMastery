@@ -75,3 +75,8 @@ test('skip(forward): can not be skipped by a non-number', () => {
         fibonacci.skip('a');
     }).toThrow('Must be an integer');
 });
+
+test('previous(): When initialized the previous number can be returned', () => {
+    fibonacci.init(13);
+    expect(fibonacci.previous()).toBe(8);
+});
