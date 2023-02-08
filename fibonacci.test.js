@@ -32,6 +32,12 @@ test('init(seed): can not be initialised to a non-fibonacci number', () => {
     }).toThrow('Not a fibonacci number');
 });
 
+test('init(seed): can not be initialised to a non-number', () => {
+    expect(() => {
+        fibonacci.init('a');
+    }).toThrow('Not a fibonacci number');
+});
+
 test('skip(forward): can be skipped by 1 to a fibonacci number', () => {
     fibonacci.init(8);
     expect(fibonacci.skip(1)).toBe(13);
@@ -45,4 +51,11 @@ test('skip(forward): can be skipped by 2 to a fibonacci number', () => {
 test('skip(forward): can be skipped by -1 to a fibonacci number', () => {
     fibonacci.init(8);
     expect(fibonacci.skip(-1)).toBe(5);
+});
+
+test('skip(forward): can not be skipped by a non-number', () => {
+    fibonacci.init(8);
+    expect(() => {
+        fibonacci.skip('a');
+    }).toThrow('Not a fibonacci number');
 });
